@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     }else {
       console.log("NOOO  esta loggeado");
-
+      //Sczxc
     }
   }
 
