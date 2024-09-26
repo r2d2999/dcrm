@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .error-container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-code {
+    font-size: 80px;
+    color: #ff4757;
+  }
+  
+  .error-message {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  .error-description {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .error-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff4757;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .error-link:hover {
+    background-color: #e84118;
+  }
+  

@@ -1,0 +1,145 @@
+/* Contenedor principal */
+.main-c {
+    padding: 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+
+
+    .mc-1{
+        background-color: #fff;
+    }
+
+    .mc-2{
+        background-color: #fff;
+
+    }
+}
+
+
+
+
+/* Encabezados de la tabla */
+.b-headers {
+    margin-bottom: 20px;
+}
+
+.b-headers h2 {
+    font-weight: bold;
+    font-size: 28px;
+    margin: 0;
+}
+
+.b-headers p {
+    font-size: 14px;
+    color: #606060;
+}
+
+/* Tabla */
+.b-table {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #bfbfbf; /* Color de fondo del encabezado */
+    color: black; /* Color del texto del encabezado */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color de filas pares */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+    th, td {
+        font-size: 12px; /* Ajusta el tamaño de fuente para pantallas pequeñas */
+        padding: 8px; /* Reduce el padding */
+    }
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 480px) {
+    th, td {
+        display: block;
+        text-align: right;
+        border: none;
+    }
+
+    tr {
+        margin-bottom: 10px; /* Espaciado entre filas */
+        display: block;
+    }
+
+    td {
+        text-align: left; /* Alinea texto a la izquierda */
+        padding: 10px; /* Padding para celdas */
+        position: relative;
+        padding-left: 50%; /* Espacio para etiquetas */
+    }
+
+    td::before {
+        content: attr(data-label); /* Muestra etiquetas en dispositivos móviles */
+        position: absolute;
+        left: 10px;
+        width: calc(50% - 20px);
+        white-space: nowrap;
+        font-weight: bold;
+    }
+}
+
+
+.b-footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 30px;
+}
+.iconos {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease, filter 0.2s ease; /* Añade una transición suave */
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3)); /* Sombra inicial */
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1); /* Aumenta el tamaño al 110% */
+        filter: drop-shadow(2px 2px 5px rgba(5, 148, 10, 0.722)); /* Sombra al hacer hover */
+    }
+}
+
+
+.iconos2 {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease, filter 0.2s ease; /* Añade una transición suave */
+    filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3)); /* Sombra inicial */
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1); /* Aumenta el tamaño al 110% */
+        filter: drop-shadow(2px 2px 5px rgba(175, 70, 4, 0.722)); /* Sombra al hacer hover */
+    }
+}
+

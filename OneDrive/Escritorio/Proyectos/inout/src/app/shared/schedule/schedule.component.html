@@ -1,0 +1,21 @@
+
+<div class="c-main">
+    
+  <h4>Vista Previa de Horario Laboral</h4>
+
+  <table mat-table [dataSource]="horario" class="mat-elevation-z8">
+    <ng-container matColumnDef="hora">
+      <th mat-header-cell *matHeaderCellDef> Hora </th>
+      <td mat-cell *matCellDef="let element"> {{element.hora}} </td>
+    </ng-container>
+
+    <ng-container *ngFor="let dia of diasDeLaSemana" matColumnDef="{{dia}}">
+      <th mat-header-cell *matHeaderCellDef> {{dia}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[dia]?.join(', ')}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+  </table>
+
+</div>
