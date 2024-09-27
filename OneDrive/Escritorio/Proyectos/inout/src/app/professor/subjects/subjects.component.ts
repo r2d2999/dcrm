@@ -126,7 +126,8 @@ export class SubjectsComponent implements OnInit {
             Viernes: true,
           }
         },
-        materias: this.materiasSeleccionadas
+        materias: this.materiasSeleccionadas,
+        tipo: 'profesor'
       },
       width: '100%', // Ajusta el ancho como necesites (puedes usar '600px', '80%', etc.)
       height: 'auto', // Ajusta la altura si es necesario

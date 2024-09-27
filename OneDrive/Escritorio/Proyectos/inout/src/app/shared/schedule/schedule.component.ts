@@ -90,6 +90,8 @@ export class ScheduleComponent implements OnInit {
         if (this.data.tipo.userType === 'student') {
           // Para estudiantes, obtenemos las materias directamente
           fila[dia] = this.obtenerMateriasPorHoraEstudiante(hora, dia);
+
+          
         } else {
           // Para profesores, utilizamos el horario laboral
           const horarioDia = this.data.profesor.horarioLaboral[dia];
