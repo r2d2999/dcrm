@@ -46,6 +46,7 @@ export class RegisterComponent implements OnInit {
 
         const credentials = {user: data.user, status: true};
       
+        //ghooa
 
         this.authService.storeUser(credentials);
         
