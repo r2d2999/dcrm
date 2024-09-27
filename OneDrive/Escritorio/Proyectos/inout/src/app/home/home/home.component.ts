@@ -73,6 +73,7 @@ ngOnInit() {
       }else if(this.userTipe === 'estudiante'){
         this.inscrito = this.user.inscrito;
         console.log("INSCRITO:", this.inscrito);
+        
       }
 
     }

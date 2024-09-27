@@ -6,12 +6,21 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate{
+  public isAthenticated: any;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+      this.isAthenticated = this.authService.isAuthenticated();
+
+
+      if (route.routeConfig?.path === 'register' && this.isAthenticated) {
+        this.router.navigate(['/home'], { replaceUrl: true });
+        return false;
+      }
     
     if (this.authService.isAuthenticated()) { // Verifica si el usuario está autenticado
       return true;

@@ -42,11 +42,16 @@ export class RegisterComponent implements OnInit {
       next: (data) => {
         //time
         const loginTime = new Date().getTime();
-        localStorage.setItem('loginTime', loginTime.toString());
+        //localStorage.setItem('loginTime', loginTime.toString());
 
+        const credentials = {user: data.user, status: true};
+      
 
-        this.authService.storeUser(data.user);
-        this.router.navigate(['/home']);
+        this.authService.storeUser(credentials);
+        
+        //this.router.navigate(['/home']);
+        this.router.navigate(['/home'], { replaceUrl: true });
+
       },
       error: () => {
         Swal.fire({
