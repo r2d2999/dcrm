@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  user: any;
+  public user: any;
   public inscrito!: boolean;
   public tipo: any;
   public name: any;
@@ -34,9 +34,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   public schedule: any;
   public userTipe: any;
 
+
   private timeoutId: any;
 
   private routerEventsSubscription!: Subscription;
+
+  public isLogged: any;
 
 
   
@@ -50,18 +53,57 @@ constructor(private router: Router, private service: RegisterUserService, privat
 
 
 ngOnInit() {
+
+  this.isLogged = this.auth.isAuthenticated();
+  console.log("STATUS: ", this.isLogged);
+
+  if(this.isLogged){
+    console.log("ESTA LOGGEADO");
+
+    this.user = this.auth.getUser();
+    console.log(this.user);
+
+    if(this.user){
+      this.userTipe = this.user.tipo;
+      console.log("USER TYPE:", this.userTipe);
+
+      if(this.userTipe === 'profesor'){
+        this.horario = this.user.horario;
+        console.log("Carga laboral: ",this.horario);
+      }else if(this.userTipe === 'estudiante'){
+        this.inscrito = this.user.inscrito;
+        console.log("INSCRITO:", this.inscrito);
+      }
+
+    }
+
+
+
+    this.router.navigate(['/home'], { replaceUrl: true });
+
+  }else{
+    console.error("NO ESTA LOGGEADO");
+    this.router.navigate(['/login'], { replaceUrl: true });
+
+  }
+
+
+
   //this.sessionService.startSessionTimer(); // Inicia el temporizador solo si el usuario está autenticado
   ///this.sessionService.resetTimer();
+  
 
+  /*
   this.routerEventsSubscription = this.router.events.subscribe(event => {
     // Manejo de eventos de navegación si es necesario
   });
   window.addEventListener('popstate', this.handlePopState.bind(this));
 
   this.loadUserData();
-
+*/
  
 
+/*
   if (this.auth.isAuthenticated()) {
     window.addEventListener('popstate', this.handlePopState.bind(this));
 
@@ -114,6 +156,7 @@ ngOnInit() {
       }
   }
 
+*/
 
   
 
@@ -121,8 +164,8 @@ ngOnInit() {
 
 ngOnDestroy(): void {
   // Limpiar la suscripción al evento de navegación
-  this.routerEventsSubscription.unsubscribe();
-  window.removeEventListener('popstate', this.handlePopState.bind(this));
+  //this.routerEventsSubscription.unsubscribe();
+  //window.removeEventListener('popstate', this.handlePopState.bind(this));
 }
 
 handlePopState(event: PopStateEvent) {

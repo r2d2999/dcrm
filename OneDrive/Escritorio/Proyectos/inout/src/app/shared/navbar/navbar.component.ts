@@ -22,17 +22,32 @@ import { SessionService } from '../../auth/session.service';
 export class NavbarComponent implements OnInit{
   isMenuOpen = false;
 
-  isLoggedIn: boolean = false;
+  public isLogged: any;
+  public isLoggedIn: any;
+
 
   constructor(private authService: AuthService, private sessionService: SessionService) {}
 
-  async ngOnInit(): Promise<void> {
+   ngOnInit(){
+
+    this.isLogged = this.authService.isAuthenticated();
+
+    if(this.isLogged){
+      this.isLoggedIn = this.isLogged;
+    }else {
+      this.isLoggedIn = this.isLogged;
+
+    }
+
+    /*
     await this.checkAuthStatus(); // Verifica el estado de autenticación al iniciar
     console.log("navbar says Initial value:", this.isLoggedIn);
 
     if (this.isLoggedIn) {
       this.sessionService.startSessionTimerP(); // Iniciar el temporizador si el usuario está autenticado
     }
+
+    */
   }
 
   async checkAuthStatus(): Promise<void> {
@@ -40,10 +55,12 @@ export class NavbarComponent implements OnInit{
     console.log("authService says, logged: ", this.isLoggedIn);
   }
 
+
+
   logout(): void {
     this.authService.logout(); // Llama al método de cierre de sesión
-    this.sessionService.logout();
-    this.checkAuthStatus(); // Actualiza el estado
+    //this.sessionService.logout();
+    //this.checkAuthStatus(); // Actualiza el estado
   }
 
 

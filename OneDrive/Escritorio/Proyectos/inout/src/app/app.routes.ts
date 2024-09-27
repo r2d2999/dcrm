@@ -12,7 +12,7 @@ import { ErrorPageComponent } from './info/error-page/error-page.component';
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirigir a login
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
@@ -21,5 +21,4 @@ export const routes: Routes = [
   { path: 'student-subjects', component: MateriasStudentComponent, canActivate: [AuthGuard] },
   { path: 'student-carga', component: CargamateriasComponent, canActivate: [AuthGuard] },
   { path: 'contacto', component: ContactoComponent },
- 
 ];

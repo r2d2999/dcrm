@@ -35,7 +35,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     if(this.authService.isAuthenticated()){
       console.log("el usuario esta loggeado");
-      this.router.navigate(['/home']); 
+      //this.router.navigate(['/home']); 
+      this.router.navigate(['/home'], { replaceUrl: true });
+
 
     }else {
       console.log("NOOO  esta loggeado");
@@ -48,13 +50,17 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
         next: (data) => {
           //time
-          const loginTime = new Date().getTime();
-          localStorage.setItem('loginTime', loginTime.toString());
+          //const loginTime = new Date().getTime();
+          //localStorage.setItem('loginTime', loginTime.toString());
+
+          const credentials = {user: data.user, status: true};
 
 
-          this.authService.storeUser(data.user);
-          this.router.navigate(['/home']);
-          this.location.replaceState('/home'); // Evita volver al login
+          this.authService.storeUser(credentials);
+          this.router.navigate(['/home'], { replaceUrl: true });
+
+          //this.router.navigate(['/home']);
+          //this.location.replaceState('/home'); // Evita volver al login
 
         },
         error: () => {

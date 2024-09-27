@@ -16,12 +16,27 @@ export class AuthService {
     return this.http.post<any>(this.apiUrl, { email, password });
   }
 
-  storeUser(user: any): void {
-    localStorage.setItem('user', JSON.stringify(user));
+  storeUser(data: {user: any, status: any}): void {
+    localStorage.setItem('status', data.status);
+    localStorage.setItem('user', JSON.stringify(data.user));
+
+
   }
 
-  logout(): void {
+  getUser(){
+    let user = {};
+
+    const userData = localStorage.getItem('user');
+    if(userData){
+       user = JSON.parse(userData);
+    }
+    
+    return user;
+  }
+
+  logout(){
     localStorage.removeItem('user');
+    localStorage.removeItem('status');
     this.router.navigate(['/login']);
 
   }
